@@ -1221,7 +1221,12 @@ namespace MediaBrowser.MediaEncoding.Probing
         {
             return _splitWhiteList ??= new List<string>
             {
-                "AC/DC"
+                "AC/DC",
+                "K/DA",
+                "이달의 소녀 1/3",
+                "LOONA 1/3",
+                "LOONA / yyxy",
+                "LOONA / ODD EYE CIRCLE"
             };
         }
 
