@@ -1,16 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <!-- ProjectGuid is only included as a requirement for SonarQube analysis -->
-  <PropertyGroup>
-    <ProjectGuid>{2E3A1B4B-4225-4AAA-8B29-0181A84E7AEE}</ProjectGuid>
-  </PropertyGroup>
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Nullable>enable</Nullable>
-    <RootNamespace>Jellyfin.Server.Implementations.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,8 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoFixture" Version="4.15.0" />
-    <PackageReference Include="AutoFixture.AutoMoq" Version="4.15.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
     <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -38,8 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Emby.Server.Implementations\Emby.Server.Implementations.csproj" />
-    <ProjectReference Include="..\..\Jellyfin.Server.Implementations\Jellyfin.Server.Implementations.csproj" />
+    <ProjectReference Include="../../MediaBrowser.XbmcMetadata/MediaBrowser.XbmcMetadata.csproj" />
+    <ProjectReference Include="../../MediaBrowser.Providers/MediaBrowser.Providers.csproj" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
