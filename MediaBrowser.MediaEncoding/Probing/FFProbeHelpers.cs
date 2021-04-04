@@ -56,6 +56,31 @@ namespace MediaBrowser.MediaEncoding.Probing
         }
 
         /// <summary>
+        /// Gets a string from an FFProbeResult tags dictionary, iterating through all keys,
+        /// stopping at the first key that returns a result that's neither null nor blank.
+        /// </summary>
+        /// <param name="tags">The tags.</param>
+        /// <param name="keys">The checked keys.</param>
+        /// <returns>System.String.</returns>
+        public static string GetFirstNonNullNorBlankDictionaryValue(IReadOnlyDictionary<string, string> tags, params string[] keys)
+        {
+            if (tags == null || keys == null)
+            {
+                return null;
+            }
+
+            foreach (var key in keys)
+            {
+                if (tags.TryGetValue(key, out var val) && !string.IsNullOrWhiteSpace(val))
+                {
+                    return val;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Gets an int from an FFProbeResult tags dictionary.
         /// </summary>
         /// <param name="tags">The tags.</param>
@@ -65,12 +90,14 @@ namespace MediaBrowser.MediaEncoding.Probing
         {
             var val = GetDictionaryValue(tags, key);
 
-            if (!string.IsNullOrEmpty(val))
+            if (string.IsNullOrEmpty(val))
             {
-                if (int.TryParse(val, out var i))
-                {
-                    return i;
-                }
+                return null;
+            }
+
+            if (int.TryParse(val, out var i))
+            {
+                return i;
             }
 
             return null;
